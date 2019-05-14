@@ -1,13 +1,19 @@
 describe('TypeScript', () => {
 
-  it('test title in header', () => {
-    cy.visit('https://example.cypress.io/')
+  beforeEach(() => {
+    cy.visit('http://localhost:26537/index.html');
+  });
 
-    const container = cy.get('.banner').get('.container');
+  it('should use find to find elements based on previous element', () => {
+    cy.get('.main')
+      .find('.panel')
+      .should('not.contain', 'Header');
+  })
 
-    container.get('h1').should('have.text', 'Kitchen Sink');
-    container.get('p').should('contain', 'This is an example app used to showcase');
-
+  it.only('should find multiple nested element in some way', () => {
+    cy.get('.main').as('main');
+    cy.get('@main').find('.panel1').should('have.text', 'Panel1');
+    cy.get('@main').find('.panel2').should('contain', 'Panel2');
   })
 
 })
