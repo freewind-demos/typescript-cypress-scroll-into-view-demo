@@ -8,12 +8,20 @@ describe('TypeScript', () => {
     cy.get('.main')
       .find('.panel')
       .should('not.contain', 'Header');
-  })
+  });
 
-  it.only('should find multiple nested element in some way', () => {
+  it('should alias the container for later use', () => {
     cy.get('.main').as('main');
     cy.get('@main').find('.panel1').should('have.text', 'Panel1');
     cy.get('@main').find('.panel2').should('contain', 'Panel2');
+  });
+
+  it('should use "within" method', () => {
+    cy.get('.main').within(() => {
+      cy.get('.panel1').should('have.text', 'Panel1');
+      cy.get('.panel2').should('contain', 'Panel2');
+    });
   })
+
 
 })
