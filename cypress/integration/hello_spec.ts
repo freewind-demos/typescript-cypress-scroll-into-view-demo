@@ -1,7 +1,7 @@
 describe('TypeScript', () => {
 
   beforeEach(() => {
-    cy.visit('http://localhost:26537/index.html');
+    cy.visit('index.html');
   });
 
   it('should use find to find elements based on previous element', () => {

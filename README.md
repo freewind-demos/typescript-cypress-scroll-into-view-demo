@@ -14,7 +14,6 @@ TypeScript Cypress Get Nested Element Demo
 
 ```
 npm install
-npm run server
 
 npm run test:open
 npm run test:run
