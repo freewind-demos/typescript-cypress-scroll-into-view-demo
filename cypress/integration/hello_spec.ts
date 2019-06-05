@@ -4,24 +4,16 @@ describe('TypeScript', () => {
     cy.visit('index.html');
   });
 
-  it('should use find to find elements based on previous element', () => {
-    cy.get('.main')
-      .find('.panel')
-      .should('not.contain', 'Header');
+  it('scroll and click on the button outside page', () => {
+    cy.get('#main')
+      .should('have.text', 'There is an element on the right outside the page');
+
+    cy.get('#out')
+      .scrollIntoView()
+      .get('#out button')
+      .click()
+      .get('#main')
+      .should('have.text', 'Hello from outside button');
   });
-
-  it('should alias the container for later use', () => {
-    cy.get('.main').as('main');
-    cy.get('@main').find('.panel1').should('have.text', 'Panel1');
-    cy.get('@main').find('.panel2').should('contain', 'Panel2');
-  });
-
-  it('should use "within" method', () => {
-    cy.get('.main').within(() => {
-      cy.get('.panel1').should('have.text', 'Panel1');
-      cy.get('.panel2').should('contain', 'Panel2');
-    });
-  })
-
 
 })

@@ -1,7 +1,19 @@
-<div class="panel">Header</div>
+<style>
+    #out {
+        position: absolute;
+        left: 3000px;
 
-<div class="main">
-    <div class="panel">Panel</div>
-    <div class="panel1">Panel1</div>
-    <div class="panel2">Panel2</div>
+        border: 3px solid red;
+        width: 100px;
+        height: 100px;
+    }
+</style>
+<script>
+  function sayHello() {
+    document.getElementById('main').innerText = 'Hello from outside button';
+  }
+</script>
+<div id="main">There is an element on the right outside the page</div>
+<div id="out">
+    <button onclick="sayHello()">Click</button>
 </div>
